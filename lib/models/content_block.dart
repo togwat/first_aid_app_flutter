@@ -28,3 +28,9 @@ class WarningBlock extends ContentBlock {
 
   final String warning;
 }
+
+class HintBlock extends ContentBlock {
+  HintBlock(this.hint);
+
+  final String hint;
+}

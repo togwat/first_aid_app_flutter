@@ -1,3 +1,4 @@
+import 'package:first_aid_app/widgets/hint_content.dart';
 import 'package:first_aid_app/widgets/image_content.dart';
 import 'package:first_aid_app/widgets/numbered_list_content.dart';
 import 'package:first_aid_app/widgets/text_content.dart';
@@ -14,6 +15,7 @@ class ContentBlockDispatcher extends StatelessWidget {
     TextBlock b => TextContent(b.text),
     ImageBlock b => ImageContent(b.imagePath),
     NumberedListBlock b => NumberedListContent(b.list),
-    WarningBlock b => WarningContent(b.warning)
+    WarningBlock b => WarningContent(b.warning),
+    HintBlock b => HintContent(b.hint)
   };
 }
