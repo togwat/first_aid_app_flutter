@@ -13,9 +13,11 @@ class FirstAidPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(title),
-      body: ListView(
+      body: ListView.separated(
         padding: const EdgeInsets.all(20.0),
-        children: blocks.map((b) => (ContentBlockDispatcher(b))).toList(),
+        itemCount: blocks.length,
+        itemBuilder: (context, i) => ContentBlockDispatcher(blocks[i]),
+        separatorBuilder: (context, i) => const SizedBox(height: 16),
       ),
     );
   }

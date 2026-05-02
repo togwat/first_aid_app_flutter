@@ -7,6 +7,9 @@ class ImageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(imagePath);
+    return UnconstrainedBox(
+      alignment: Alignment.center,
+      child: Image.asset(imagePath),
+    );
   }
 }
