@@ -32,7 +32,8 @@ class FirstAidMenu extends StatelessWidget {
     final listItems = [
       FirstAidItem("CPR", [
         ImageBlock("images/resuscitation.png"),
-        TextBlock("Restore breathing and circulation by alternating chest compressions with rescue breaths."),
+        TextBlock("Cardiopulmonary resuscitation (CPR) is a livesaving technique used when someone's heart stops beating. Immediate CPR can double or triple the chance of survival."),
+        WarningBlock("Call emergency services (111) before starting CPR."),
         NumberedListBlock([
           "Place the person on their back on a firm surface.",
           "Put the heel of one hand on the centre of the chest, and your other hand on top.",

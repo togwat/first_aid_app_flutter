@@ -22,3 +22,9 @@ class NumberedListBlock extends ContentBlock {
 
   final List<String> list;
 }
+
+class WarningBlock extends ContentBlock {
+  WarningBlock(this.warning);
+
+  final String warning;
+}
