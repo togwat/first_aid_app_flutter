@@ -32,7 +32,14 @@ class FirstAidMenu extends StatelessWidget {
     final listItems = [
       FirstAidItem("CPR", [
         ImageBlock("images/resuscitation.png"),
-        TextBlock("Restore breathing and circulation by alternating chest compressions with rescue breaths.")]),
+        TextBlock("Restore breathing and circulation by alternating chest compressions with rescue breaths."),
+        NumberedListBlock([
+          "Place the person on their back on a firm surface.",
+          "Put the heel of one hand on the centre of the chest, and your other hand on top.",
+          "Push hard and fast: at least 5cm deep, at a rate of 100-120 compressions per minute.",
+          "After 30 compressions, tilt the head back, lift the chin, and give 2 rescue breaths.",
+          "Continue the cycle of 30 compressions and 2 breaths until help arrives."
+        ])]),
       FirstAidItem("Burns", [
         ImageBlock("images/burns.png"),
         TextBlock("Cool the burn under running water for 20 minutes and cover loosely with a clean dressing.")]),
