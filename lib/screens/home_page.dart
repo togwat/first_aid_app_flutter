@@ -1,3 +1,4 @@
+import 'package:first_aid_app/models/content_block.dart';
 import 'package:flutter/material.dart';
 import 'package:first_aid_app/screens/first_aid_page.dart';
 import 'package:first_aid_app/models/first_aid_item.dart';
@@ -29,10 +30,28 @@ class FirstAidMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final listItems = [
-      FirstAidItem("CPR", "Restore breathing and circulation by alternating chest compressions with rescue breaths.", "images/resuscitation.png"),
-      FirstAidItem("Choking", "Dislodge a blocked airway using back blows and abdominal thrusts (Heimlich manoeuvre).", "images/choking.png"),
-      FirstAidItem("Bleeding", "Control blood loss by applying firm, steady pressure directly to the wound.", "images/bleeding.png"),
-      FirstAidItem("Burns", "Cool the burn under running water for 20 minutes and cover loosely with a clean dressing.", "images/burns.png")
+      FirstAidItem("CPR", [
+        ImageBlock("images/resuscitation.png"),
+        TextBlock("Restore breathing and circulation by alternating chest compressions with rescue breaths.")]),
+      FirstAidItem("Burns", [
+        ImageBlock("images/burns.png"),
+        TextBlock("Cool the burn under running water for 20 minutes and cover loosely with a clean dressing.")]),
+      FirstAidItem("Bleeding", [
+        ImageBlock("images/bleeding.png"),
+        TextBlock("Control blood loss by applying firm, steady pressure directly to the wound.")]),
+      FirstAidItem("Choking", [
+        ImageBlock("images/choking.png"),
+        TextBlock("Dislodge a blocked airway using back blows and abdominal thrusts (Heimlich manoeuvre).")]),
+      FirstAidItem("Allergic Reaction", [
+
+      ]),
+      FirstAidItem("Overdose", [
+
+      ]),
+      FirstAidItem("Sprains, Strains, Bruises", [
+
+      ])
+      
     ];
 
     return Scaffold(
@@ -46,7 +65,7 @@ class FirstAidMenu extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => FirstAidPage(
-                    item.title, item.content, item.imagePath
+                    item.title, item.blocks
                   )
                 )
               );

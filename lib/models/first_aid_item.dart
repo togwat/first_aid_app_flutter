@@ -1,7 +1,8 @@
+import 'content_block.dart';
+
 class FirstAidItem {
-  const FirstAidItem(this.title, this.content, this.imagePath);
+  const FirstAidItem(this.title, this.blocks);
 
   final String title;
-  final String content;
-  final String imagePath;
+  final List<ContentBlock> blocks;
 }

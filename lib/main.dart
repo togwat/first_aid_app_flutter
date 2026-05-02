@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.red),
       ),
-      home: const MyHomePage(title: 'First Aid App'),
+      home: const MyHomePage(title: 'First Aid Learner'),
     );
   }
 }
