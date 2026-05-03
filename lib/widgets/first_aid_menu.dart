@@ -100,6 +100,8 @@ class FirstAidMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: _listItems.map(
         (item) => ListTile(
           title: Text(item.title),

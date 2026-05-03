@@ -1,3 +1,4 @@
+import 'package:first_aid_app/screens/quiz_page.dart';
 import 'package:first_aid_app/widgets/first_aid_menu.dart';
 import 'package:first_aid_app/widgets/app_bar.dart';
 import 'package:first_aid_app/widgets/disclaimer_dialog_content.dart';
@@ -32,10 +33,24 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(widget.title),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: FirstAidMenu()
+      body: ListView(
+        children: [
+          FirstAidMenu(),
+          Divider(),
+          ListTile(
+            title: Text("Quiz"),
+            leading: Icon(Icons.question_mark_rounded, color: Colors.redAccent),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QuizPage()
+                )
+              );
+            }
+          )
+        ]
       )
     );
   }
