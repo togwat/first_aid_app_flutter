@@ -2,22 +2,30 @@ import 'package:first_aid_app/models/quiz.dart';
 import 'package:flutter/material.dart';
 
 class QuestionCard extends StatefulWidget {
-  const QuestionCard(this.question, {required this.onAnswer, super.key});
+  const QuestionCard(this.question, {required this.onAnswer, this.initialChoice, super.key});
 
   final QuizQuestion question;
   final void Function(int choice) onAnswer;
+  final int? initialChoice;
 
   @override
   State<QuestionCard> createState() => _QuestionCardState();
 }
 
 class _QuestionCardState extends State<QuestionCard> {
-  int? _selectedChoice;
+  late int? _selectedChoice = widget.initialChoice;
 
   void _handleTap(int index) {
     if (_selectedChoice != null) return;
     setState(() => _selectedChoice = index);
     widget.onAnswer(index);
+  }
+
+  _TileState _stateFor(int index) {
+    if (_selectedChoice == null) return _TileState.enabled;
+    if (index == widget.question.answer) return _TileState.correct;
+    if (index == _selectedChoice) return _TileState.incorrect;
+    return _TileState.disabled;
   }
 
   @override
@@ -35,8 +43,7 @@ class _QuestionCardState extends State<QuestionCard> {
             padding: const EdgeInsets.only(bottom: 8),
             child: _ChoiceTile(
               label: widget.question.choices[i],
-              selected: _selectedChoice == i,
-              disabled: _selectedChoice != null,
+              state: _stateFor(i),
               onTap: () => _handleTap(i),
             ),
           ),
@@ -48,43 +55,62 @@ class _QuestionCardState extends State<QuestionCard> {
 class _ChoiceTile extends StatelessWidget {
   const _ChoiceTile({
     required this.label,
-    required this.selected,
-    required this.disabled,
+    required this.state,
     required this.onTap,
   });
 
   final String label;
-  final bool selected;
-  final bool disabled;
+  final _TileState state;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
+    final (Color bg, Color border, Color text, Icon? icon) = switch (state) {
+      _TileState.enabled => (
+          Theme.of(context).colorScheme.surfaceContainerHighest,
+          Colors.transparent,
+          Theme.of(context).colorScheme.onSurface,
+          null,
+        ),
+      _TileState.disabled => (
+          Theme.of(context).colorScheme.surfaceContainerHighest,
+          Colors.transparent,
+          Theme.of(context).disabledColor,
+          null,
+        ),
+      _TileState.correct => (
+          Colors.green.shade100,
+          Colors.green,
+          Colors.green.shade900,
+          const Icon(Icons.check_circle, color: Colors.green, size: 20),
+        ),
+      _TileState.incorrect => (
+          Colors.red.shade100,
+          Colors.red,
+          Colors.red.shade900,
+          const Icon(Icons.cancel, color: Colors.red, size: 20),
+        ),
+    };
+
     return GestureDetector(
-      onTap: disabled ? null : onTap,
+      onTap: state == _TileState.enabled ? onTap : null,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-          color: selected
-              ? Theme.of(context).colorScheme.primaryContainer
-              : Theme.of(context).colorScheme.surfaceContainerHighest,
+          color: bg,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: selected
-                ? Theme.of(context).colorScheme.primary
-                : Colors.transparent,
-          ),
+          border: Border.all(color: border),
         ),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: disabled && !selected
-                ? Theme.of(context).disabledColor
-                : Theme.of(context).colorScheme.onSurface,
-          ),
+        child: Row(
+          children: [
+            Expanded(child: Text(label, style: TextStyle(color: text))),
+            ?icon,
+          ],
         ),
       ),
     );
   }
 }
+
+enum _TileState { enabled, disabled, correct, incorrect }

@@ -29,11 +29,15 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   int _currentIndex = 0;
+  final List<int?> _choices = List.filled(_quiz.questions.length, null);
 
   bool get _canGoBack => _currentIndex > 0;
   bool get _canGoNext => _currentIndex < _quiz.questions.length - 1;
 
-  void _onAnswer(int choice) {}
+  // get choice index from QuestionCard
+  void _onAnswer(int choice) {
+    setState(() => _choices[_currentIndex] = choice);
+  }
 
   void _goNext() {
     if (_canGoNext) setState(() => _currentIndex++);
@@ -62,6 +66,7 @@ class _QuizPageState extends State<QuizPage> {
                 key: ValueKey(_currentIndex),
                 _quiz.questions[_currentIndex],
                 onAnswer: _onAnswer,
+                initialChoice: _choices[_currentIndex],
               ),
             ),
             const SizedBox(height: 16),
