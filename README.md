@@ -1,19 +1,7 @@
-# first_aid_app
+# First Aid Learner (Flutter)
 
-A new Flutter project.
+A cross-platform app that provides educational content for some first aid procedures.
 
-## Getting Started
+<img height="800" alt="First Aid App Flutter screenshot" src="https://github.com/user-attachments/assets/0e323929-e2a2-4366-9379-8e9e6bae63d4" />
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-Image credit: [Hato Hone St John, First aid guides](https://www.stjohn.org.nz/first-aid/first-aid-library/)
+Images credit: [Hato Hone St John, First aid guides](https://www.stjohn.org.nz/first-aid/first-aid-library/)
