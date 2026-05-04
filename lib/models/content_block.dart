@@ -34,3 +34,11 @@ class HintBlock extends ContentBlock {
 
   final String hint;
 }
+
+class CPRTimerBlock extends ContentBlock {
+  CPRTimerBlock(this.bpm, this.compressions, this.rescueBreaths);
+
+  final int bpm;
+  final int compressions;
+  final int rescueBreaths;
+}

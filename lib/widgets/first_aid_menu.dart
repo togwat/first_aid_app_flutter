@@ -15,7 +15,8 @@ final _listItems = [
       "Push hard and fast: at least 5cm deep, at a rate of 100-120 compressions per minute.",
       "After 30 compressions, tilt the head back, lift the chin, and give 2 rescue breaths.",
       "Continue the cycle of 30 compressions and 2 breaths until help arrives."
-    ])
+    ]),
+    CPRTimerBlock(110, 30, 2)
   ]),
   FirstAidItem("Burns", Symbols.mode_heat, [
     ImageBlock("images/burns.png"),

@@ -1,3 +1,4 @@
+import 'package:first_aid_app/widgets/cpr_timer_content.dart';
 import 'package:first_aid_app/widgets/hint_content.dart';
 import 'package:first_aid_app/widgets/image_content.dart';
 import 'package:first_aid_app/widgets/numbered_list_content.dart';
@@ -16,6 +17,7 @@ class ContentBlockDispatcher extends StatelessWidget {
     ImageBlock b => ImageContent(b.imagePath),
     NumberedListBlock b => NumberedListContent(b.list),
     WarningBlock b => WarningContent(b.warning),
-    HintBlock b => HintContent(b.hint)
+    HintBlock b => HintContent(b.hint),
+    CPRTimerBlock b => CPRTimer(b.bpm, b.compressions, b.rescueBreaths)
   };
 }
