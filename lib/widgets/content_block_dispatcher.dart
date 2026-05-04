@@ -18,6 +18,6 @@ class ContentBlockDispatcher extends StatelessWidget {
     NumberedListBlock b => NumberedListContent(b.list),
     WarningBlock b => WarningContent(b.warning),
     HintBlock b => HintContent(b.hint),
-    CPRTimerBlock b => CPRTimer(b.bpm, b.compressions, b.rescueBreaths)
+    CPRTimerBlock b => CPRTimer(b.bpm, b.compressions, b.rescueBreaths, b.breathInterval)
   };
 }

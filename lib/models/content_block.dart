@@ -36,9 +36,10 @@ class HintBlock extends ContentBlock {
 }
 
 class CPRTimerBlock extends ContentBlock {
-  CPRTimerBlock(this.bpm, this.compressions, this.rescueBreaths);
+  CPRTimerBlock(this.bpm, this.compressions, this.rescueBreaths, this.breathInterval);
 
   final int bpm;
   final int compressions;
   final int rescueBreaths;
+  final int breathInterval;  // milliseconds
 }
