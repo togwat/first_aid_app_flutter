@@ -7,15 +7,25 @@ import 'package:flutter/material.dart';
 
 const _quiz = Quiz([
   QuizQuestion(
-    'What is the correct compression rate for CPR?',
-    ['60–80 per minute', '100–120 per minute', '140–160 per minute'],
-    1,
+    "What is the correct compression rate for CPR?",
+    ["60–80 per minute", "100–120 per minute", "140–160 per minute"],
+    1
   ),
   QuizQuestion(
-    'How long should you cool a burn under running water?',
-    ['5 minutes', '10 minutes', '20 minutes'],
-    2,
+    "How long should you cool a burn under running water?",
+    ["1 minute", "5 minutes", "10 minutes", "20 minutes"],
+    3
   ),
+  QuizQuestion(
+    "How many back blows should you give to a choking adult?",
+    ["3", "5", "10", "As many as needed"], 
+    1
+  ),
+  QuizQuestion(
+    "What should you do if blood soaks through the first bandage?",
+    ["Remove it and apply a new one", "Add more material on top without removing the first layer", "Apply a torniquet immediately", "Rinse the wound with water"],
+    1
+  )
 ]);
 
 // ─────────────────────────────────────────────────────────────────────────────
