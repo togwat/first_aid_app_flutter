@@ -2,6 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
+String formatElapsed(Duration d) {
+  final minutes = d.inMinutes.remainder(60).toString().padLeft(1, '0');
+  final seconds = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+  return '$minutes:$seconds';
+}
+
+int bpmToInterval(int bpm) => (60000 / bpm).round();
+
 class CPRTimer extends StatefulWidget {
   const CPRTimer(this.bpm, this.compressions, this.rescueBreaths, this.breathInterval, {super.key});
 
@@ -22,7 +30,7 @@ class _CPRTimerState extends State<CPRTimer> with SingleTickerProviderStateMixin
   late final AnimationController _pulseController;
   late final Animation<double> _pulseAnimation;
 
-  int get _compressionInterval => (60000 / widget.bpm).round();
+  int get _compressionInterval => bpmToInterval(widget.bpm);
   int get _currentInterval => _isCompression ? _compressionInterval : widget.breathInterval;
 
   int _compressionCount = 0;
@@ -105,13 +113,7 @@ class _CPRTimerState extends State<CPRTimer> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-  // format stopwatch timer
-  String get _elapsed {
-    final d = _stopwatch.elapsed;
-    final minutes = d.inMinutes.remainder(60).toString().padLeft(1, '0');
-    final seconds = d.inSeconds.remainder(60).toString().padLeft(2, '0');
-    return '$minutes:$seconds';
-  }
+  String get _elapsed => formatElapsed(_stopwatch.elapsed);
 
   @override
   Widget build(BuildContext context) {
